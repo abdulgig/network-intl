@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "ni-chart.fullname" . }}-test-connection"
+  labels:
+{{ include "ni-chart.labels" . | indent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "ni-chart.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
