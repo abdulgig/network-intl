@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Network International
+name: sampleapp
+version: v0.2.0
